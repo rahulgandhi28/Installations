@@ -10,6 +10,9 @@ kubectl get pods -n kubecost
 ## Connect to the KubeCost Dashboard (Setting the port number)
 kubectl port-forward -n kubecost svc/kubecost-cost-analyzer 9090:9090
 
-IMP :Change the type from ClusterIp to LoadBlancer to get a public IP of kubecost-cost-analyzer to access the dashboard
+## Change the type from ClusterIp to LoadBalancer
+kubectl -n kubecost edit svc kubecost-cost-analyzer
+
+# Now access the UI from the external IP of loadbalancer with port :9090
 
 
