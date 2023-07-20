@@ -1,0 +1,15 @@
+## Installing with  Helm 3
+
+kubectl create namespace kubecost
+helm repo add kubecost https://kubecost.github.io/cost-analyzer/
+helm install kubecost kubecost/cost-analyzer --namespace kubecost --set kubecostToken="YWxnaWJib25AbWljcm9zb2Z0LmNvbQ==xm343yadf98"
+
+## After a few minutes check to see that everything is up and running
+kubectl get pods -n kubecost
+
+## Connect to the KubeCost Dashboard (Setting the port number)
+kubectl port-forward -n kubecost svc/kubecost-cost-analyzer 9090:9090
+
+IMP :Change the type from ClusterIp to LoadBlancer to get a public IP of kubecost-cost-analyzer to access the dashboard
+
+
